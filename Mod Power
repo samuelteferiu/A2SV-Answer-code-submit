@@ -1,0 +1,9 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import sys
+inp=sys.stdin.read().split()
+if len(inp)==3:
+    a=int(inp[0])
+    b=int(inp[1])
+    c=int(inp[2])
+    print(pow(a,b))
+    print(pow(a,b,c))
