@@ -1,0 +1,28 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        temp=[strs[0]]
+        for i in  range(1,len(strs)):
+            if  len(temp[0])>= len(strs[i]):
+                temp.insert(0,strs[i])
+            else:
+                temp.append(strs[i])
+        if len(temp)<2:
+            return temp[0]
+        test=temp[0]
+        i=0
+        j=1
+        out=""
+        matchs=False
+        while i <len(test):
+            while j<len(temp):
+                if test[i]==temp[j][i]:
+                    j+=1
+                    matchs=True
+                else:
+                    return out
+            if matchs:
+                out=out+test[i]
+                matchs=False
+                j=1
+            i+=1
+        return out
