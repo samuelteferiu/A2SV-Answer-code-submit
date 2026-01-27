@@ -1,0 +1,9 @@
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        x=Counter(nums)
+        for keys,values in x.items():
+            if values>1:
+                return True
+        return False
+
+        
