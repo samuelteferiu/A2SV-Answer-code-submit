@@ -1,0 +1,11 @@
+from collections import Counter
+
+class Solution:
+    def isSubset(self, a, b):
+        ca = Counter(a)
+        cb = Counter(b)
+
+        for key, value in cb.items():
+            if ca[key] < value:
+                return False
+        return True
