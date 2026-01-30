@@ -1,0 +1,6 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        check=[]
+        nums=set(nums)
+        check=set(range(len(nums)+1))
+        return (check-nums).pop()        
