@@ -1,0 +1,12 @@
+import sys
+n = int(input())
+dicts = {}
+for _ in range(n):
+    nam, phone = input().split()
+    dicts[nam] = phone
+queries = sys.stdin.read().splitlines()
+for q in queries:
+    if q in dicts:
+        print(q + "=" + dicts[q])
+    else:
+        print("Not found")
