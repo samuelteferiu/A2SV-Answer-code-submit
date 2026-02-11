@@ -1,0 +1,16 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        check1=set("asdfghjkl")
+        check2=set("qwertyuiop")
+        check3=set("zxcvbnm")
+        ans=[]
+        for i in words:
+            x=set(i.lower())
+            if x.issubset(check1):
+                ans.append(i)
+            elif x.issubset(check2):
+                ans.append(i)
+            elif x.issubset(check3):
+                ans.append(i)
+        return ans
+        
