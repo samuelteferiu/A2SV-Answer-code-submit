@@ -1,0 +1,18 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        mors=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        alph=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        dicts={}
+        for i in range(26):
+            dicts[alph[i]]=mors[i]
+        ans=[]
+        for j in  words:
+            k=0
+            mor=""
+            while k<len(j):
+                mor+=dicts[j[k]]
+                k+=1
+            ans.append(mor)
+        return len(set(ans))
+        
+
