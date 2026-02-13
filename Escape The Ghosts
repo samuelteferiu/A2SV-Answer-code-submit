@@ -1,0 +1,11 @@
+class Solution:
+    def escapeGhosts(self, ghosts: List[List[int]], target: List[int]) -> bool:
+        sel=[0,0]
+        distancesel = abs(sel[0] - target[0]) + abs(sel[1] - target[1])
+        closegho=99999999999999999999999999999999999999
+        for i in ghosts:
+            x= abs(i[0] - target[0]) + abs(i[1] - target[1])
+            closegho=min(closegho,x)
+        return distancesel<closegho
+
+        
