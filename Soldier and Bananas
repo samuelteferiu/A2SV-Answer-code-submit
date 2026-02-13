@@ -1,0 +1,11 @@
+n=list(map(int,input().split()))
+cost=0
+for i in range(1,n[2]+1):
+    cost+= i*n[0]
+if cost>=n[1]:
+    print(cost-n[1])
+else:
+    print(0)
+    
+
+        
