@@ -1,0 +1,16 @@
+class Solution:
+    def queryResults(self, limit: int, queries: List[List[int]]) -> List[int]:
+        ballcolor = {}
+        count = defaultdict(int)
+        ans = []
+        for x, y in queries:
+            if x in ballcolor:
+                old = ballcolor[x]
+                count[old] -= 1
+                if count[old] == 0:
+                    del count[old]
+            ballcolor[x] = y
+            count[y] += 1
+            ans.append(len(count))
+
+        return ans
