@@ -1,0 +1,20 @@
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        n, m = len(mat), len(mat[0])
+        mp = {}
+        for i in range(n):
+            for j in range(m):
+                if i + j not in mp:
+                    mp[i + j] = []
+                mp[i + j].append(mat[i][j])
+        ans = []
+        direction = True  
+        for key in sorted(mp.keys()):
+            val = mp[key]
+            if direction:
+                ans.extend(val[::-1])  
+            else:
+                ans.extend(val)       
+            direction = not direction  
+        return ans
+        
