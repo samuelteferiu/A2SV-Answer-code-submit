@@ -1,0 +1,10 @@
+class Solution(object):
+    def restoreString(self, s, indices):
+        pon=0
+        ans=["0"]*len(indices)
+        while pon <len(s):
+            x=indices[pon]
+            ans[x]=s[pon]
+            pon+=1
+        y="".join(ans)
+        return y
