@@ -1,0 +1,11 @@
+mat=[]
+for _ in range(5):
+    row=list(map(int, input().split()))
+    mat.append(row)
+index=0
+for i in range(len(mat)):
+    for j in range(len(mat[i])):
+        if mat[i][j]==1:
+            index=abs(2-i)+abs(2-j)
+            break
+print(index)
