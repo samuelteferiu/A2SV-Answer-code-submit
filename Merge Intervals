@@ -1,0 +1,19 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        order = sorted(intervals, key=lambda x: x[0])
+        prev = order[0]
+        ans = [order[0]]
+        for i in range(1, len(order)):
+            if prev[1] >= order[i][0]:
+                new = [prev[0], max(prev[1], order[i][1])]
+                ans[-1] = new
+                prev = new
+            else:
+                ans.append(order[i])
+                prev = order[i]
+        return ans
+
+
+
+         
+        
