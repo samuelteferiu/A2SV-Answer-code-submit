@@ -1,0 +1,16 @@
+class Solution:
+    def maxWidthOfVerticalArea(self, points: List[List[int]]) -> int:
+        x=[]
+        for i in points:
+            x.append(i[0])
+        x.sort()
+        maxs=0
+        left=0
+        right=1
+        while right<len(x):
+            diff=x[right]-x[left]
+            maxs=max(maxs,diff)
+            left+=1
+            right+=1
+        return maxs
+        
