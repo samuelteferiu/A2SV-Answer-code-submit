@@ -1,0 +1,24 @@
+class Solution:
+    def smallestNumber(self, num: int) -> int:
+        if num >= 0:
+            if num == 0:
+                return 0
+            else:
+                num_str = str(num)
+                nums = [int(x) for x in num_str if x != "0"]
+                nums.sort()
+                zeros = ["0"] * (len(num_str) - len(nums))
+                if len(nums) > 0:
+                    new = [str(nums[0])] + zeros + [str(x) for x in nums[1:]]
+                    ans = "".join(new)
+                    return int(ans)
+        else:
+            num_str = str(num)
+            opp = num_str[0] 
+            nums = [int(x) for x in num_str[1:] if x != "0"]
+            nums.sort(reverse=True)
+            zeros = ["0"] * (len(num_str) - 1 - len(nums))
+            if len(nums) > 0:
+                new = [str(nums[0])]  + [str(x) for x in nums[1:]+ zeros]
+                ans = opp + "".join(new)
+                return int(ans)
