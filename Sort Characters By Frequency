@@ -1,0 +1,16 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        count=Counter(s)
+        new=defaultdict(list)
+        for key ,val in count.items():
+            new[val].append(key)
+        order=sorted(new)
+        ans=""
+        for i in order:
+            x=new[i]
+            for j in x:
+                ans+=j*i
+        return ans[::-1]
+
+
+        
