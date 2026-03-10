@@ -1,0 +1,28 @@
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        count = 1
+        left = 0
+        right = left + 1
+        write = 0 
+        while left < len(chars) - 1 and right < len(chars):
+            if chars[left] == chars[right]:
+                count += 1
+                right += 1
+            else:
+                chars[write] = chars[left]
+                write += 1
+                if count > 1:
+                    for c in str(count):
+                        chars[write] = c
+                        write += 1
+                count = 1
+                left = right
+                right = left + 1
+        chars[write] = chars[left]
+        write += 1
+        if count > 1:
+            for c in str(count):
+                chars[write] = c
+                write += 1
+        
+        return write
