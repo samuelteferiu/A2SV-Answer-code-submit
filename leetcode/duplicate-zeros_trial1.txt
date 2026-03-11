@@ -1,0 +1,16 @@
+class Solution:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        left=0
+        ans=[]
+        while len(ans)<len(arr):
+            if arr[left]==0:
+                ans.append(0)
+                ans.append(0)
+            else:
+                ans.append(arr[left])
+            left+=1
+        for i in range(len(arr)):
+            arr[i]=ans[i]
+        
+
+            
