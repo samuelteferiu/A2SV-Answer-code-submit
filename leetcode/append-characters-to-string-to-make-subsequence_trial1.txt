@@ -1,0 +1,14 @@
+class Solution:
+    def appendCharacters(self, s: str, t: str) -> int:
+        left=0
+        right=0
+        append=len(t)
+        while left<len(s) and right<len(t):
+            if s[left]!=t[right]:
+                left+=1
+            else:
+                append-=1
+                left+=1
+                right+=1
+        return append
+        
