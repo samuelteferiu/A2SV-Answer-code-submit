@@ -1,0 +1,23 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        i=len(s)
+        j=len(p)
+        ans=[]
+        pc=Counter(p)
+        win=Counter(s[:j])
+        if pc==win:
+            ans.append(0)
+        for k in range(j,i):
+            win[s[k]]+=1
+            win[s[k-j]]-=1
+            if win[s[k-j]]==0:
+                del win[s[k-j]]
+            if win==pc:
+                ans.append(k-j+1)
+        return ans
+
+
+
+        
+        
+        
