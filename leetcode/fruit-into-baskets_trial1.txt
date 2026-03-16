@@ -1,0 +1,20 @@
+class Solution:
+    def totalFruit(self, fruits: list[int]) -> int:
+        dicts = {}
+        left = 0
+        right = 0
+        maxs = 0
+        sums = 0
+        while right < len(fruits):
+            dicts[fruits[right]] = dicts.get(fruits[right], 0) + 1
+            sums += 1
+            while len(dicts) > 2:
+                sums -= 1
+                dicts[fruits[left]] -= 1
+                if dicts[fruits[left]] == 0:
+                    del dicts[fruits[left]]
+                left += 1
+            maxs = max(maxs, sums)
+            right += 1
+
+        return maxs
