@@ -1,0 +1,22 @@
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        check =set(arr2)
+        notarr2=[]
+        inarr2={}
+        for i in arr1:
+            if i not in check:
+                notarr2.append(i)
+            else:
+                if i in inarr2:
+                    inarr2[i]+=1
+                else:
+                    inarr2[i]=1
+        notarr2.sort()
+        ans=[]
+        for j in arr2:
+            while inarr2[j]>0:
+                ans.append(j)
+                inarr2[j]-=1
+        return ans+notarr2
+
+        
