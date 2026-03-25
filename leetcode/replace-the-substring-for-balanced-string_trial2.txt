@@ -1,0 +1,14 @@
+class Solution:
+    def balancedString(self, s: str) -> int:
+        n = len(s)
+        target = n // 4
+        count = Counter(s)
+        ans = n
+        l = 0
+        for r in range(n):
+            count[s[r]] -= 1
+            while l < n and (count.get('Q', 0) <= target and count.get('W', 0) <= target and count.get('E', 0) <= target and count.get('R', 0) <= target):
+                ans = min(ans, r - l + 1)
+                count[s[l]] += 1
+                l += 1
+        return ans
