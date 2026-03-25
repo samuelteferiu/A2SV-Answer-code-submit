@@ -1,0 +1,17 @@
+import math
+
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        check = set()
+        for i in range(int(math.sqrt(c)) + 1):
+            check.add(i)
+        l = 0
+        while l <= int(math.sqrt(c)):
+            remaining = c - l*l
+            if remaining >= 0:
+                root = int(math.sqrt(remaining))
+                if root * root == remaining: 
+                    return True
+            l += 1
+
+        return False
