@@ -1,0 +1,21 @@
+class Solution:
+    def shiftingLetters(self, s: str, shifts: List[List[int]]) -> str:
+        dicts = defaultdict(int)
+        for start, end, direction in shifts:
+            if direction == 1:
+                dicts[start] += 1
+                dicts[end + 1] -= 1
+            else:
+                dicts[start] -= 1
+                dicts[end + 1] += 1
+        for i in range(1, len(s)):
+            dicts[i] += dicts[i - 1]
+
+        res = []
+        for j, val in enumerate(s):
+            shift = dicts[j]   
+
+            news = chr((ord(val) - ord('a') + shift) % 26 + ord('a'))
+            res.append(news)
+
+        return "".join(res)
