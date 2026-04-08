@@ -1,0 +1,19 @@
+class Solution:
+    def removeStars(self, s: str) -> str:
+        stack=[]
+        count=defaultdict(int)
+        for i in s:
+            if i=="*":
+                count[i]+=1
+            else:
+                count['other']+=1
+        if count["*"]>=count['other']:
+            return "".join(stack)
+        else:
+            for i in s:
+                if stack and i=="*":
+                    stack.pop()
+                else:
+                    stack.append(i)
+            return   "".join(stack)
+        
