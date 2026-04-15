@@ -1,0 +1,18 @@
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        car = [[] for _ in range(len(position))] 
+        ans=0
+        prev=0
+        time=[0]*max(len(speed),len(position))
+        for i in range(len(position)):
+            car[i].append(position[i])
+        for j in range(len(speed)):
+            car[j].append(speed[j])
+        car=sorted(car,reverse=True)
+        for k in range(len(car)):
+            time[k] = (target - car[k][0]) / car[k][1]
+        for t in time:
+            if t > prev:
+                ans += 1
+                prev = t
+        return ans
