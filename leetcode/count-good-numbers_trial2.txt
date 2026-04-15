@@ -1,0 +1,13 @@
+class Solution:
+    def countGoodNumbers(self, n: int) -> int:
+        MOD = 10**9 + 7
+        if n%2==0:
+            x=n//2
+            val = (pow(5, x, MOD) * pow(4, x, MOD)) % MOD
+            return val
+        else:
+            odd=n//2
+            even=odd+1
+            val = (pow(5, even, MOD) * pow(4, odd, MOD)) % MOD
+            return val
+        
