@@ -1,0 +1,18 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack=[]
+        string=""
+        nums=0
+        for i in s:
+            if i.isdigit():
+                nums=nums*10+int(i)
+            elif i=="[":
+                stack.append((string,nums))
+                string=""
+                nums=0
+            elif i=="]":
+                prevs,prevn=stack.pop()
+                string=prevs+string*prevn
+            else:
+                string+=i
+        return string
