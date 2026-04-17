@@ -1,0 +1,24 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        res=1
+        if n==0:
+            return res
+        elif n>0:
+            while n>0:
+                if n % 2 == 1:  
+                    res *= x
+                x*=x
+                n//=2
+            return res
+        else:
+            new=1/x
+            n=-n
+            while n>0:
+                if n % 2 == 1:   
+                    res *= new
+                new*=new
+                n//=2
+            return res
+
+
+        
