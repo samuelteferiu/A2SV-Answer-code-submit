@@ -1,0 +1,17 @@
+class Solution:
+    def predictTheWinner(self, nums: List[int]) -> bool:
+        def score(l,r):
+            if l==r:
+                return nums[l]
+            leftpath=nums[l] - score(l+1, r)
+            rightpath=nums[r] - score(l, r-1)
+            maxs=max(leftpath,rightpath)
+            return maxs
+        if  score(0, len(nums)-1) >= 0:
+            return True
+        else:
+            return False
+    
+
+
+        
