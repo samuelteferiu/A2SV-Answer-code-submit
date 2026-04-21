@@ -1,0 +1,20 @@
+class Solution:
+    def diffWaysToCompute(self, expression: str) -> List[int]:
+        stack= []
+        for i, c in enumerate(expression):
+            if c in "+-*":
+                left = self.diffWaysToCompute(expression[:i])
+                right = self.diffWaysToCompute(expression[i+1:])
+                for l in left:
+                    for r in right:
+                        if c == '+':
+                            stack.append(l + r)
+                        elif c == '-':
+                            stack.append(l - r)
+                        elif c == '*':
+                            stack.append(l * r)
+        if not stack:
+            stack.append(int(expression))
+        return stack
+
+        
