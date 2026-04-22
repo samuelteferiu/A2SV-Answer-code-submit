@@ -1,0 +1,22 @@
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        maxs=max(piles)
+        ans=9999999999999
+        mins=1
+        while mins<=maxs:
+            mid=(maxs+mins)//2
+            taken=0
+            for i in piles:
+                taken+=math.ceil(i/mid)
+            if taken>h:
+                mins=mid+1
+            else:
+                ans=mid
+                maxs=mid-1
+        return ans
+
+
+
+
+
+        
