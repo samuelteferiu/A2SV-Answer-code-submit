@@ -1,0 +1,19 @@
+class Solution:
+    def findRadius(self, houses, heaters):
+        houses.sort()
+        heaters.sort()
+        ans = 0
+        for i in houses:
+            j = bisect.bisect_left(heaters, i)
+            if j > 0:
+                left = i - heaters[j - 1]
+            else:
+                left = float('inf')
+            if j < len(heaters):
+                right = heaters[j] -i
+            else:
+                right = float('inf')
+            nearest = left if left < right else right
+            if nearest > ans:
+                ans = nearest
+        return ans
