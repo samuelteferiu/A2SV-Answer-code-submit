@@ -1,0 +1,29 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        ans = []
+        temp = []
+        for i in range(len(path)):
+            if path[i] != "/":
+                temp.append(path[i])
+            else:
+                if temp:
+                    part = "".join(temp)
+
+                    if part == ".":
+                        pass
+                    elif part == "..":
+                        if ans:
+                            ans.pop()
+                    else:
+                        ans.append(part)
+
+                    temp = []
+        if temp:
+            part = "".join(temp)
+            if part == "..":
+                if ans:
+                    ans.pop()
+            elif part != ".":
+                ans.append(part)
+
+        return "/" + "/".join(ans)
